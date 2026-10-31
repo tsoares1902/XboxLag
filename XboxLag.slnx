@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/XboxLag.Application/XboxLag.Application.csproj" />
+    <Project Path="src/XboxLag.Domain/XboxLag.Domain.csproj" />
+    <Project Path="src/XboxLag.Infrastructure/XboxLag.Infrastructure.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,14 @@
+rules:
+  - id: csharp-disable-certificate-validation
+    languages: [csharp]
+    severity: ERROR
+    message: Do not bypass TLS certificate validation. Use the platform trust store.
+    pattern-either:
+      - pattern: $HANDLER.ServerCertificateCustomValidationCallback = ($REQ, $CERT, $CHAIN, $ERRORS) => true;
+      - pattern: $HANDLER.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+      - pattern: ServicePointManager.ServerCertificateValidationCallback += ($SENDER, $CERT, $CHAIN, $ERRORS) => true;
+  - id: csharp-insecure-binary-deserialization
+    languages: [csharp]
+    severity: ERROR
+    message: BinaryFormatter is unsafe. Use an explicit serialization contract.
+    pattern: new BinaryFormatter(...)

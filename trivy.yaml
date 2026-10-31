@@ -1,0 +1,15 @@
+scan:
+  scanners:
+    - vuln
+    - misconfig
+    - secret
+  skip-dirs:
+    - .git
+    - artifacts
+    - '**/bin'
+    - '**/obj'
+severity:
+  - HIGH
+  - CRITICAL
+exit-code: 1
+format: table

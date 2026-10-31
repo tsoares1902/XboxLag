@@ -28,20 +28,24 @@ XboxLag/
 ├── trivy.yaml
 ├── docs/
 │   ├── quality-security.md
-│   └── validation-stage-01.md
+│   ├── validation-stage-01.md
+│   ├── architecture.md
+│   └── validation-stage-02.md
 ├── docker/                         # vazio; nenhuma imagem nesta etapa
 ├── src/
 │   ├── XboxLag.Domain/
 │   ├── XboxLag.Application/
-│   └── XboxLag.Infrastructure/
+│   ├── XboxLag.Infrastructure/
+│   └── XboxLag.Adapters/
 └── tests/
     ├── XboxLag.Domain.Tests/
     ├── XboxLag.Application.Tests/
-    └── XboxLag.Infrastructure.Tests/
+    ├── XboxLag.Infrastructure.Tests/
+    └── XboxLag.Adapters.Tests/
 ```
 
 Cada diretório de projeto contém seu `.csproj` e `packages.lock.json` versionado.
-Dependências de produção: Infrastructure → Application → Domain. Cada projeto
+Dependências de produção: Infrastructure/Adapters → Application → Domain. Cada projeto
 de testes referencia somente sua camada de produção; referências transitivas
 seguem a mesma arquitetura.
 
@@ -69,9 +73,21 @@ dotnet test XboxLag.slnx -c Release --collect:"XPlat Code Coverage" --settings c
 Os XMLs Cobertura ficam em `artifacts/test-results/<id>/coverage.cobertura.xml`.
 Abra os arquivos no editor ou em um visualizador compatível. No GitHub Actions,
 baixe o artifact `test-results-and-coverage` na execução do workflow.
-Não há percentual mínimo: ainda não existe código de negócio nem testes reais.
-O runner informa ausência de testes; isso não significa testes aprovados.
-XMLs vazios eventualmente produzidos pelo collector não representam cobertura útil.
+Stage 02 includes domain, application and architecture tests. Infrastructure has
+no concrete services or tests yet. There is no minimum coverage threshold;
+empty reports from an assembly without tests do not represent useful coverage.
+
+## Stage 02
+
+The solution follows Modular Monolith, Clean Architecture and Hexagonal
+Architecture, with Games, Routing, Relays, Measurements and Sessions modules
+inside the technical assemblies. Domain models enforce invariants, route
+selection compares compatible measurements, and application use cases orchestrate
+platform-neutral ports. No real interception, optimization, probes, relay server,
+tunnel or desktop UI is operational yet.
+
+See [architecture](docs/architecture.md) and
+[Stage 02 validation](docs/validation-stage-02.md).
 
 Consulte [qualidade e segurança](docs/quality-security.md),
 [contribuição](CONTRIBUTING.md) e [validações desta etapa](docs/validation-stage-01.md).

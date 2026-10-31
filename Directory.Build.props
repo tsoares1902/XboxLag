@@ -6,9 +6,15 @@
     <AnalysisLevel>10.0-recommended</AnalysisLevel>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NuGetAudit>true</NuGetAudit>
     <NuGetAuditMode>all</NuGetAuditMode>
     <NuGetAuditLevel>low</NuGetAuditLevel>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
+  <Target Name="ConfigureTestDocumentationWarnings" BeforeTargets="CoreCompile">
+    <PropertyGroup Condition="'$(IsTestProject)' == 'true'">
+      <NoWarn>$(NoWarn);CS1591</NoWarn>
+    </PropertyGroup>
+  </Target>
 </Project>

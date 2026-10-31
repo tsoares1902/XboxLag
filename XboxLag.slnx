@@ -1,10 +1,12 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/XboxLag.Adapters/XboxLag.Adapters.csproj" />
     <Project Path="src/XboxLag.Application/XboxLag.Application.csproj" />
     <Project Path="src/XboxLag.Domain/XboxLag.Domain.csproj" />
     <Project Path="src/XboxLag.Infrastructure/XboxLag.Infrastructure.csproj" />
   </Folder>
   <Folder Name="/tests/">
+    <Project Path="tests/XboxLag.Adapters.Tests/XboxLag.Adapters.Tests.csproj" />
     <Project Path="tests/XboxLag.Application.Tests/XboxLag.Application.Tests.csproj" />
     <Project Path="tests/XboxLag.Domain.Tests/XboxLag.Domain.Tests.csproj" />
     <Project Path="tests/XboxLag.Infrastructure.Tests/XboxLag.Infrastructure.Tests.csproj" />

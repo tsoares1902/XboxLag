@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net10.0": {
+      "xboxlag.application": {
+        "type": "Project",
+        "dependencies": {
+          "XboxLag.Domain": "[1.0.0, )"
+        }
+      },
+      "xboxlag.domain": {
+        "type": "Project"
+      }
+    }
+  }
+}
